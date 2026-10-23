@@ -10,6 +10,9 @@ Projeto desenvolvido durante as aulas de Desenvolvimento Back-End.
 - **Aula 04:** Integração com Supabase.
 - **Aula 05:** CRUD de categorias.
 - **Aula 06:** Controllers e rotas de categorias.
+- **Aula 07:** Repositorio.
+- **Aula 08:** Exceções.
+- **Aula 09:** Validações.
 
 ## Tecnologias utilizadas
 

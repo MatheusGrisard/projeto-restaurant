@@ -1,4 +1,4 @@
-import { ValidationError } from "../errors/ValidationError.js";
+import { ValidationError } from "../erros/ValidationError.js";
 
 export class Category {
     private id?: string | undefined;
@@ -18,7 +18,6 @@ export class Category {
 
         this.rename(name);
         this.changeDisplayOrder(display_order);
-
     }
 
     static restore(id: string, name: string, display_order: number, active: boolean, description: string, icon: string): Category {
@@ -46,11 +45,10 @@ export class Category {
     public getDisplayOrder(): number {
         return this.display_order;
     }
-    isActive(): boolean {
+    public isActive(): boolean {
         return this.active;
     }
 
-    // setters
     rename(name: string): void {
         if(typeof name !== "string" || name.trim().length === 0) {
             throw new ValidationError("Nome da Categoria é obrigatório.");

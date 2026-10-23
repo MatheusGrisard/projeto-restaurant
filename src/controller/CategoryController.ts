@@ -1,8 +1,8 @@
 import type { Request, Response } from "express";
 import CategoryRepository from "../repository/CategoryRepository.js";
 import { Category } from "../models/Category.js";
-import { ValidationError } from "../errors/ValidationError.js"; 
-import { NotFoundError } from "../errors/NotFoundError.js";
+import { ValidationError } from "../erros/ValidationError.js";
+import { NotFoundError } from "../erros/NotFoundError.js";
 
 async function getAll(req: Request, res: Response) {
     try {
@@ -22,7 +22,7 @@ async function getByKeyword(req: Request<{ keyword: string }>, res: Response) {
     const { keyword } = req.params;
 
     if (!keyword || typeof keyword != "string") {
-        res.status(400).json({
+        return res.status(400).json({
             message: "Palavra-chave não informada."
         })
     }
@@ -44,7 +44,7 @@ async function getById(req: Request<{ id: string }>, res: Response) {
     const { id } = req.params;
 
     if (!id) {
-        res.status(404).json({
+        return res.status(400).json({
             message: "ID da Categoria não informado."
         })
     }
@@ -81,7 +81,7 @@ async function create(req: Request, res: Response) {
         console.error("Erro ao criar categoria: ", error);
 
         if (error instanceof ValidationError) {
-            res.status(400).json({
+            return res.status(400).json({
                 message: error.message,
             });
         }
@@ -97,7 +97,7 @@ async function update(req: Request<{ id: string }>, res: Response) {
     const { name, display_order, description, icon, active } = req.body;
 
     if (!id) {
-        res.status(404).json({
+        return res.status(400).json({
             message: "ID da Categoria não informado."
         })
     }
@@ -120,11 +120,11 @@ async function update(req: Request<{ id: string }>, res: Response) {
         }
 
         if (active == true) {
-            category.activate;
+            category.activate();
         }
 
         if (active == false) {
-            category.deactivate;
+            category.deactivate();
         }
 
         const updatedCategory = await CategoryRepository.update(category);
@@ -134,13 +134,13 @@ async function update(req: Request<{ id: string }>, res: Response) {
         console.error("Erro ao atualizar categoria: ", error);
 
         if (error instanceof ValidationError) {
-            res.status(400).json({
+            return res.status(400).json({
                 message: error.message,
             });
         }
         
         if (error instanceof NotFoundError) {
-            res.status(404).json({
+            return res.status(404).json({
                 message: error.message,
             });
         }
@@ -155,7 +155,7 @@ async function remove(req: Request<{ id: string }>, res: Response) {
     const { id } = req.params;
 
     if (!id) {
-        res.status(404).json({
+        return res.status(400).json({
             message: "ID da Categoria não informado."
         })
     }
@@ -170,13 +170,13 @@ async function remove(req: Request<{ id: string }>, res: Response) {
         console.error("Erro ao remover categoria: ", error);
 
         if (error instanceof ValidationError) {
-            res.status(400).json({
+            return res.status(400).json({
                 message: error.message,
             });
         }
         
         if (error instanceof NotFoundError) {
-            res.status(404).json({
+            return res.status(404).json({
                 message: error.message,
             });
         }

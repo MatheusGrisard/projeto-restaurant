@@ -1,5 +1,5 @@
 import supabase from "../config/supabase.js";
-import { NotFoundError } from "../errors/NotFoundError.js";
+import { NotFoundError } from "../erros/NotFoundError.js";
 import { Category } from "../models/Category.js";
 
 async function findAll() {
@@ -50,7 +50,7 @@ async function create(category: Category) {
             active: category.isActive(),
         })
         .select()
-        .single();
+        .maybeSingle();
 
     if (error) {
         throw error;
