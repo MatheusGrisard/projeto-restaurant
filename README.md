@@ -1,8 +1,8 @@
 # Desenvolvimento Back-End
 
-Projeto desenvolvido durante as aulas de Desenvolvimento Back-End.
+Projeto desenvolvido durante as aulas de Desenvolvimento Back-End do Professor Mateus Pereira.
 
-## Conteúdo das aulas
+## Conteúdo das AULAS
 
 - **Aula 01:** Introdução ao projeto.
 - **Aula 02:** Rotas HTTP.
@@ -13,6 +13,7 @@ Projeto desenvolvido durante as aulas de Desenvolvimento Back-End.
 - **Aula 07:** Repositorio.
 - **Aula 08:** Exceções.
 - **Aula 09:** Validações.
+- **Aula 10:** Testes unitários.
 
 ## Tecnologias utilizadas
 
@@ -23,4 +24,4 @@ Projeto desenvolvido durante as aulas de Desenvolvimento Back-End.
 
 ## Objetivo
 
-Praticar conceitos de desenvolvimento Back-End, criação de rotas, controllers, operações CRUD e integração com banco de dados.
+Praticar conceitos de desenvolvimento Back-End, criação de rotas, controllers, operações CRUD, testes e integração com banco de dados.
